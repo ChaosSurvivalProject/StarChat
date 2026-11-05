@@ -1,0 +1,54 @@
+# ============================================================
+#  StarChat v1.2.0 配置文件（Velocity 跨服聊天互通插件）
+#  本文件位于 plugins/StarChat/config.yml
+#  改完任意一项后执行 /chat reload 即可生效，无需重启代理。
+# ============================================================
+
+channel:
+  # 新玩家首次进服的默认频道：GLOBAL=全服（推荐）/ LOCAL=单服
+  default: GLOBAL
+
+format:
+  # 消息格式，使用 MiniMessage 标签（简单颜色最稳，基岩端 Geyser 支持也最好）。
+  # 占位符：{server}=来源服务器显示名  {player}=玩家名  {message}=消息内容
+  # {player} 与 {message} 的内容会被自动转义，玩家无法伪造颜色/标签。
+  global: "<gold>[全服]</gold> <aqua>[{server}]</aqua> <white>{player}</white>: <gray>{message}</gray>"
+  local: "<gray>[本地] {player}: {message}</gray>"
+
+servers:
+  # ------------------------------------------------------------
+  # 服务器显示名映射：开放结构，自由增删，数量不限。
+  # 【重要】每个 key 必须与 velocity.toml 中 [servers] 段的 key 完全一致
+  #        （不是容器名/实例名！），装好后先执行 /chat servers 查看代理
+  #        实际识别到的服务器名，再照着填，不要凭实例名猜。
+  # 允许多个 key 指向同一个显示名（一对多，分服来源统一）。
+  # 下面三个是保留配置项，不是服务器映射：
+  # ------------------------------------------------------------
+  # 未配置映射的服务器怎么办：SHOW_RAW=显示原始名（默认，最稳）/ HIDE=不显示来源段 / UNKNOWN=显示 fallback-text
+  fallback: SHOW_RAW
+  # fallback 为 UNKNOWN 时显示的文字
+  fallback-text: "未知"
+  # 是否区分服务器名大小写：false=不区分（推荐）
+  case-sensitive: false
+  # 示例：把左边换成你 velocity.toml 里的真实 key 后取消注释即可
+  # backend-a: "主城"
+  # backend-b: "炽壤"
+  # backend-c: "炽壤"        # 一对多：两个分服都显示"炽壤"
+
+database:
+  # sqlite（默认，单 Velocity 实例开箱即用，文件生成在本目录）或 mysql
+  type: sqlite
+  # sqlite 数据库文件名（放在本插件数据目录）
+  file: "chat_prefs.db"
+  # 以下为 mysql 用；type=mysql 才生效。端口改这里，代码里没有任何硬编码数字。
+  host: "127.0.0.1"
+  port: 3306
+  database: "starinn"
+  username: "root"
+  # 默认空密码；使用 mysql 时请改为你的真实密码（本文件是首次运行的配置模板，不含任何真实凭据）
+  password: ""
+
+message:
+  # 切换频道时的确认提示
+  switch-global: "<green>已切换到全服频道，你的发言将广播到所有服务器</green>"
+  switch-local: "<green>已切换到单服频道，你的发言仅本服可见</green>"
