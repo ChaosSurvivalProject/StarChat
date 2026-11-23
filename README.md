@@ -1,11 +1,23 @@
 # StarChat v1.2.0 —— Velocity 跨服聊天互通插件
 
+<p align="center">
+  <img src="assets/images/banner.png" alt="StarChat 宣传图" width="820">
+</p>
+
+
 > English documentation: [README_EN.md](README_EN.md)
 
 玩家说的话其他所有后端服都能看到，并显示来源服务器中文名；玩家可在「全服 / 单服」
 频道间切换（默认全服）。支持经 Geyser 接入 Velocity 的基岩版玩家，无需任何额外配置。
 
 ---
+
+## 效果预览
+
+<p align="center">
+  <img src="assets/images/demo.png" alt="StarChat 演示图" width="720">
+</p>
+
 
 ## 1. 安装位置（最容易装错的地方）
 
